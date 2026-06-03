@@ -1,0 +1,33 @@
+npm install @angular/cli
+
+ng new app
+
+cd app
+
+ng g c header
+
+ng g c footer
+
+ng serve
+src/app/app.ts
+import { Component, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+
+import { Header } from './header/header';
+import { Footer } from './footer/footer';
+
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet, Header, Footer],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class App {
+  protected readonly title = signal('app');
+}
+src/app/app.html
+<h1>My App</h1>
+
+<header>hi</header>
+
+<footer>bye</footer>
