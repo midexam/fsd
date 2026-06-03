@@ -1,0 +1,33 @@
+import React, { Component } from 'react';
+
+class CounterDisplay extends Component {
+  render() {
+    return (
+      <h2>Current Count: {this.props.currentCount}</h2>
+    );
+  }
+}
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      count: 0
+    };
+  }
+
+  increment = () => {
+    this.setState({ count: this.state.count + 1 });
+  }
+
+  render() {
+    return (
+      <div>
+        <CounterDisplay currentCount={this.state.count} />
+        <button onClick={this.increment}>INCREMENT</button>
+      </div>
+    );
+  }
+}
+
+export default App;
