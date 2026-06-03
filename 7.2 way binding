@@ -1,0 +1,32 @@
+npm install @angular/cli
+
+ng new app
+
+cd app
+
+ng serve
+src/app/app.ts
+import { Component, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet, FormsModule],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class App {
+  protected readonly title = signal('app');
+
+  text = '';
+}
+src/app/app.html
+<div>
+  <h2>Two Way Binding</h2>
+
+  <label>Enter Text: </label>
+  <input [(ngModel)]="text" />
+
+  <p>You entered: {{ text }}</p>
+</div>
