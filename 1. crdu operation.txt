@@ -1,0 +1,31 @@
+const { MongoClient }=require('mongodb');
+const client = new MongoClient('mongodb://127.0.0.1:27017');
+async function main(){
+    try{
+       
+        await client.connect();
+        console.log("Connected!");
+        const db=client.db('MYDB');
+        const collection=db.collection('student');
+        const insert=await collection.insertOne({name:'anvitha',rollno:'01',branch:'cse'});
+        console.log('inserted',insert);
+        const insert2=await collection.insertOne({name:'divya',rollno:'02',branch:'cse'});
+        console.log('inserted',insert2);
+        const find=await collection.findOne({name:'anvitha'});
+        console.log('found',find);
+        const update=await collection.updateOne({name:'divya'},{$set:{branch:'ECE'}});
+        console.log('updated',update);
+        const del=await collection.deleteOne({name:'anvitha'});
+        console.log('deleted',del);
+        await client.close();
+    }
+        catch(error){
+            console.log(error);
+        }
+        
+    }
+
+main();
+
+
+node app.js
