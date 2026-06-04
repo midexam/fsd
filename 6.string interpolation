@@ -8,37 +8,32 @@ ng serve
 src/app/app.ts
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('app');
 
-  show = true;
+  // String Interpolation
+  name = 'Chinmayi';
 
-  students = [
-    'Ravi',
-    'Priya',
-    'Kiran',
-    'Anu'
-  ];
+  // Property Binding
+  imageUrl =
+    'https://angular.dev/assets/images/presskit/angular_icon_gradient.gif';
+
+  // Class Binding
+  isHighlight = true;
 }
 src/app/app.html
-<h1>Angular Directives Example</h1>
 
-<p *ngIf="show">
-  Welcome to Angular
+<p>Name: {{ name }}</p>
+
+<img [src]="imageUrl" width="100" height="100">
+
+<p [class.highlight]="isHighlight">
+  This is a highlighted text.
 </p>
-
-<h3>Student List</h3>
-
-<ul>
-  <li *ngFor="let s of students">
-    {{ s }}
-  </li>
-</ul>
