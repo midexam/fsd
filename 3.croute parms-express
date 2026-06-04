@@ -1,0 +1,24 @@
+npm init -y
+
+npm install express
+
+node file.js
+file.js
+const express = require('express');
+
+const app = express();
+
+app.get('/student/:id', (req, res) => {
+  res.send("Student ID: " + req.params.id);
+});
+
+app.get('/student/:id/:age', (req, res) => {
+  res.send(
+    "Student ID: " + req.params.id +
+    "\nStudent Age: " + req.params.age
+  );
+});
+
+app.listen(5000, () => {
+  console.log("Server running on port http://localhost:5000");
+});
